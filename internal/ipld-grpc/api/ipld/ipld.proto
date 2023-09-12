@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package ipld;
+
+option go_package = "github.com/KadirbekSharau/file-to-ipld/ipld";
+
+service IPLDService {
+    rpc UploadFile(FileUploadRequest) returns (FileUploadResponse);
+    rpc GetFileByCID(FileRequest) returns (FileResponse);
+}
+
+message FileUploadRequest {
+    bytes file_data = 1;
+}
+
+message FileUploadResponse {
+    string cid = 1;
+}
+
+message FileRequest {
+    string cid = 1;
+}
+
+message FileResponse {
+    bytes file_data = 1;
+}
